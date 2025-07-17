@@ -192,26 +192,28 @@ class _BlogPageState extends State<BlogPage> {
                     ),
                     const Divider(height: 32),
                   ],
-                  const Text('Lugares publicados',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 10),
-                  ...posts.map((post) => Card(
-                        margin: const EdgeInsets.symmetric(vertical: 8),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.network(post['imagen_url'], fit: BoxFit.cover),
-                            Padding(
-                              padding: const EdgeInsets.all(8),
-                              child: Text(
-                                post['titulo'],
-                                style: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
+                  if (rol == 'visualizador') ...[
+                    const Text('Lugares publicados',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                    const SizedBox(height: 10),
+                    ...posts.map((post) => Card(
+                          margin: const EdgeInsets.symmetric(vertical: 8),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.network(post['imagen_url'], fit: BoxFit.cover),
+                              Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: Text(
+                                  post['titulo'],
+                                  style: const TextStyle(
+                                      fontSize: 16, fontWeight: FontWeight.bold),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      )),
+                            ],
+                          ),
+                        )),
+                  ],
                   const SizedBox(height: 32),
                   Center(
                     child: ElevatedButton.icon(
